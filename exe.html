@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODEK</title>
+  <link rel="icon" href="favcon.png" type="image">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.7/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/fontawesome.min.css"
+    integrity="sha512-cHxvm20nkjOUySu7jdwiUxgGy11vuVPE9YeK89geLMLMMEOcKFyS2i+8wo0FOwyQO/bL8Bvq1KMsqK4bbOsPnA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-200">
+
+  <!-- navbar -->
+<nav class="bg-gray-800 shadow-lg">
+  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="#" class="text-white font-bold text-xl">Logo</a>
+      </div>
+
+      <!-- Menu -->
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button class="bg-gray-800 p-1 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-label="Toggle user menu">
+          <svg class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- User Menu -->
+      <div class="absolute top-16 right-0 w-48 bg-white shadow-md rounded-lg hidden">
+        <div class="py-2">
+          <!-- Authentication Links -->
+          <template x-if="! user">
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Login</a>
+            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Signup</a>
+          </template>
+          <template x-if="user">
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <a href="{{ route('logout') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+            </form>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- script section -->
+  <script src="main.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyAGCXT4g8HoaU6mwElBhPBxpl1-PObGLCc",
+      authDomain: "odek-cdb64.firebaseapp.com",
+      projectId: "odek-cdb64",
+      storageBucket: "odek-cdb64.appspot.com",
+      messagingSenderId: "278334400862",
+      appId: "1:278334400862:web:68b917894a15dd004747cf",
+    };
+
+firebase.initializeApp(firebaseConfig);
+
+// Add an event listener to handle changes in the user's authentication state
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // If the user is logged in, display their username and a logout button in the navbar
+    const username = user.displayName;
+    $('#user-info').text(`Welcome, ${username}`);
+    $('#user-info').show();
+    $('#logout-btn').show();
+    $('#login-btn').hide();
+    $('#signup-btn').hide();
+  } else {
+    // If the user is not logged in, clear the user info in the navbar and hide the logout button,
+    // and show the login and signup buttons
+    $('#user-info').empty();
+    $('#user-info').hide();
+    $('#logout-btn').hide();
+    $('#login-btn').show();
+    $('#signup-btn').show();
+  }
+});
+
+// Add an event listener to handle the logout action
+function logout() {
+  firebase.auth().signOut().then(() => {
+    // Redirect to login page
+    window.location = "login.html";
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
+
+// Add an event listener to handle the login action
+$('#login-form').submit((event) => {
+  event.preventDefault();
+  
+  const email = $('#email').val();
+  const password = $('#password').val();
+  
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // clear the form and close the modal
+      $('#login-form')[0].reset();
+      $('#login-modal').modal('hide');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(`Login failed with error code ${errorCode} and message ${errorMessage}`);
+    });
+});
+
+// Add an event listener to handle the signup action
+$('#signup-form').submit((event) => {
+  event.preventDefault();
+  
+  const email = $('#signup-email').val();
+  const password = $('#signup-password').val();
+  const displayName = $('#signup-name').val();
+  
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      
+      // set the user's display name
+      user.updateProfile({
+        displayName: displayName,
+      })
+        .then(() => {
+          // clear the form and close the modal
+          $('#signup-form')[0].reset();
+          $('#signup-modal').modal('hide');
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(`Failed to set display name with error code ${errorCode} and message ${errorMessage}`);
+        });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(`Signup failed with error code ${errorCode} and message ${errorMessage}`);
+    });
+});
+
+const navbar = document.getElementById('navbar');
+const hero = document.getElementById('hero');
+const features = document.getElementById('features');
+const features1 = document.getElementById('features1');
+const services = document.getElementById('services');
+const about = document.getElementById('about');
+const about1 = document.getElementById('about1');
+const contact = document.getElementById('contact');
+const footer = document.getElementById('footer');
+const takeTourBtn = document.getElementById('take-tour-btn');
+
+takeTourBtn.addEventListener('click', function() {
+  navbar.scrollIntoView({ behavior: 'smooth' });
+
+  setTimeout(function() {
+    features.scrollIntoView({ behavior: 'smooth' });
+  }, 1000);
+
+  setTimeout(function() {
+    services.scrollIntoView({ behavior: 'smooth' });
+  }, 2000);
+
+  setTimeout(function() {
+    about.scrollIntoView({ behavior: 'smooth' });
+  }, 3000);
+
+  setTimeout(function() {
+    contact.scrollIntoView({ behavior: 'smooth' });
+  }, 4000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 5000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 6000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 7000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 8000);
+
+});
+
+// Add an event listener to handle changes in the user's authentication state
+firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+// If the user is logged in, display their username and a logout button in the navbar
+const username = user.displayName;
+$('#user-info').text(Welcome, {username});
+$('#user-info').show();
+$('#logout-btn').show();
+$('#login-btn').hide();
+$('#signup-btn').hide();
+} else {
+// If the user is not logged in, clear the user info in the navbar and hide the logout button,
+// and show the login and signup buttons
+$('#user-info').empty();
+$('#user-info').hide();
+$('#logout-btn').hide();
+$('#login-btn').show();
+$('#signup-btn').show();
+}
+});
+
+// Add an event listener to handle the logout action
+$('#logout-btn').click(() => {
+firebase.auth().signOut();
+});
+
+// Show/hide responsive navigation menu
+const menuToggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+menu.classList.toggle("hidden");
+});
+
+  </script>
+</body>
+
+</html>
