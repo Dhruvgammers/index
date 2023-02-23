@@ -19,59 +19,99 @@
 <body class="bg-gray-200">
 
   <!-- navbar -->
-
-  <!-- Navbar with Firebase authentication and Tailwind CSS -->
+<!-- Navbar -->
 <nav class="bg-gray-800">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <!-- Hamburger button -->
-        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
-          <svg class="block h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <svg class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-        <!-- Logo -->
-        <a href="/" class="flex-shrink-0">
-          <img class="block lg:hidden h-8 w-auto" src="/logo.svg" alt="Logo">
-          <img class="hidden lg:block h-8 w-auto" src="/logo.svg" alt="Logo">
+      <!-- Logo -->
+      <div class="absolute inset-y-0 left-0 flex items-center">
+        <a href="#" class="flex-shrink-0">
+          <img class="h-8 w-8" src="odek.png" alt="Logo">
         </a>
-        <!-- Navbar links -->
-        <div class="hidden sm:block sm:ml-6">
-          <div class="flex">
-            <a href="/" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Home</a>
-            <a href="/about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">About</a>
-            <a href="/contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contact</a>
-          </div>
+      </div>
+
+      <!-- Company name -->
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <span class="text-white font-semibold text-xl">ODEK</span>
+      </div>
+
+      <!-- Navigation links -->
+      <div class="hidden sm:block sm:ml-6">
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
         </div>
       </div>
+
+      <!-- User authentication buttons -->
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <!-- User menu -->
-<div class="ml-3 relative">
-  <div>
-    <button type="button" class="flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid" id="user-menu" aria-haspopup="true">
-      <span class="hidden sm:inline-block">John Doe</span>
-      <svg class="ml-2 h-4 w-4 fill-current sm:hidden" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4zM3 10a7 7 0 1114 0v1a7 7 0 01-14 0v-1zm7-8a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
-      </svg>
-    </button>
-  </div>
-  <!-- User dropdown menu, show/hide based on menu state -->
-  <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-    <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-      <!-- User information -->
-      <div class="px-4 py-2 text-sm text-gray-700">John Doe</div>
-      <div class="border-t border-gray-100"></div>
-      <!-- Logout button -->
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Sign out</a>
+        <span class="text-white font-semibold text-sm mr-4">Sign In</span>
+        <a href="signup.html" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Sign Up</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="-mr-2 flex items-center sm:hidden">
+        <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed. -->
+          <!--
+            Heroicon name: outline/menu
+
+            Menu open: "hidden", Menu closed: "block"
+          -->
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Icon when menu is open. -->
+          <!--
+            Heroicon name: outline/x
+
+            Menu open: "block", Menu closed: "hidden"
+          -->
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            </button>
+            </div>
     </div>
   </div>
-</div>
+  <!-- Mobile menu, toggle classes based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+    </div>
+    <div class="pt-4 pb-3 border-t border-gray-700">
+      <div class="flex items-center px-5">
+        <div class="flex-shrink-0">
+          <svg class="h-10 w-10 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10 10 0 0 0 10 0zm2.25 14.33c-.59.54-1.32.87-2.12.87-.79 0-1.52-.32-2.1-.84L6.88 12.3c-1.24-1.06-1.3-2.93-.1-4.06.35-.35.75-.63 1.2-.82l.93-.31c.23-.06.48-.09.73-.09.45 0 .87.09 1.26.25l.66.25c1.08.41 2.3.18 3.07-.7l.88-.82c.2-.19.43-.34.7-.44l.94-.36c.56-.18 1.18-.05 1.6.33l.52.52c.4.4.53 1.02.33 1.56l-.35.9c-.19.27-.34.5-.44.7l-.82.88zM12 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <div class="text-base font-medium leading-none text-white">Jane Doe</div>
+          <div class="text-sm font-medium leading-none text-gray-400">jane.doe@example.com</div>
+        </div>
+        <button type="button" class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+          <span class="sr-only">Log out</span>
+          <!-- Heroicon name: outline/logout -->
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+    </div>
+    <div class="mt-3 px-2 space-y-1">
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Dashboard</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Settings</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Support</a>
+    </div>
+  </div>
+  </div>
+</nav>
+  
+
   <!-- hero section -->
 
   <section id="hero" class="bg-gradient-to-r from-blue-500 to-purple-600">
@@ -359,76 +399,87 @@
       appId: "1:278334400862:web:68b917894a15dd004747cf",
     };
 
-    firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-    // Add an event listener to handle changes in the user's authentication state
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // If the user is logged in, display their username in the navbar
-        const username = user.displayName;
-        $('#user-info').text(`Welcome, ${username}`);
-      } else {
-        // If the user is not logged in, clear the user info in the navbar
-        $('#user-info').empty();
-      }
-    });
-
-    // Hide the user info and logout button by default
-    $('#user-info').hide();
-    $('#logout-btn').hide();
-
-    // Add an event listener to handle changes in the user's authentication state
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // If the user is logged in, display their username and a logout button in the navbar
-        const username = user.displayName;
-        $('#user-info').text(`Welcome, ${username}`);
-        $('#user-info').show();
-        $('#logout-btn').show();
-      } else {
-        // If the user is not logged in, clear the user info in the navbar and hide the elements
-        $('#user-info').empty();
-        $('#user-info').hide();
-        $('#logout-btn').hide();
-      }
-    });
-
-    // Add an event listener to handle the logout action
-    $('#logout-btn').click(() => {
-      firebase.auth().signOut();
-    });
-
-    // Hide the user info and logout button by default, and show the login and signup buttons
+// Add an event listener to handle changes in the user's authentication state
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // If the user is logged in, display their username and a logout button in the navbar
+    const username = user.displayName;
+    $('#user-info').text(`Welcome, ${username}`);
+    $('#user-info').show();
+    $('#logout-btn').show();
+    $('#login-btn').hide();
+    $('#signup-btn').hide();
+  } else {
+    // If the user is not logged in, clear the user info in the navbar and hide the logout button,
+    // and show the login and signup buttons
+    $('#user-info').empty();
     $('#user-info').hide();
     $('#logout-btn').hide();
     $('#login-btn').show();
     $('#signup-btn').show();
+  }
+});
 
-    // Add an event listener to handle changes in the user's authentication state
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // If the user is logged in, display their username and a logout button in the navbar
-        const username = user.displayName;
-        $('#user-info').text(`Welcome, ${username}`);
-        $('#user-info').show();
-        $('#logout-btn').show();
-        $('#login-btn').hide();
-        $('#signup-btn').hide();
-      } else {
-        // If the user is not logged in, clear the user info in the navbar and hide the logout button,
-        // and show the login and signup buttons
-        $('#user-info').empty();
-        $('#user-info').hide();
-        $('#logout-btn').hide();
-        $('#login-btn').show();
-        $('#signup-btn').show();
-      }
-    });
+// Add an event listener to handle the logout action
+$('#logout-btn').click(() => {
+  firebase.auth().signOut();
+});
 
-    // Add an event listener to handle the logout action
-    $('#logout-btn').click(() => {
-      firebase.auth().signOut();
+// Add an event listener to handle the login action
+$('#login-form').submit((event) => {
+  event.preventDefault();
+  
+  const email = $('#email').val();
+  const password = $('#password').val();
+  
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // clear the form and close the modal
+      $('#login-form')[0].reset();
+      $('#login-modal').modal('hide');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(`Login failed with error code ${errorCode} and message ${errorMessage}`);
     });
+});
+
+// Add an event listener to handle the signup action
+$('#signup-form').submit((event) => {
+  event.preventDefault();
+  
+  const email = $('#signup-email').val();
+  const password = $('#signup-password').val();
+  const displayName = $('#signup-name').val();
+  
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      
+      // set the user's display name
+      user.updateProfile({
+        displayName: displayName,
+      })
+        .then(() => {
+          // clear the form and close the modal
+          $('#signup-form')[0].reset();
+          $('#signup-modal').modal('hide');
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(`Failed to set display name with error code ${errorCode} and message ${errorMessage}`);
+        });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(`Signup failed with error code ${errorCode} and message ${errorMessage}`);
+    });
+});
 
 const navbar = document.getElementById('navbar');
 const hero = document.getElementById('hero');
@@ -478,13 +529,39 @@ takeTourBtn.addEventListener('click', function() {
 
 });
 
-// <!-- Show/hide responsive navigation menu -->
-      const menuToggle = document.getElementById("menu-toggle");
-      const menu = document.getElementById("menu");
-  
-      menuToggle.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
+// Add an event listener to handle changes in the user's authentication state
+firebase.auth().onAuthStateChanged((user) => {
+if (user) {
+// If the user is logged in, display their username and a logout button in the navbar
+const username = user.displayName;
+$('#user-info').text(Welcome, {username});
+$('#user-info').show();
+$('#logout-btn').show();
+$('#login-btn').hide();
+$('#signup-btn').hide();
+} else {
+// If the user is not logged in, clear the user info in the navbar and hide the logout button,
+// and show the login and signup buttons
+$('#user-info').empty();
+$('#user-info').hide();
+$('#logout-btn').hide();
+$('#login-btn').show();
+$('#signup-btn').show();
+}
+});
+
+// Add an event listener to handle the logout action
+$('#logout-btn').click(() => {
+firebase.auth().signOut();
+});
+
+// Show/hide responsive navigation menu
+const menuToggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+menu.classList.toggle("hidden");
+});
 
   </script>
 </body>
