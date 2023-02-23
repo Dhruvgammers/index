@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODEK</title>
+  <link rel="icon" href="favcon.png" type="image">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/fbb5196976.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.7/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/fontawesome.min.css"
+    integrity="sha512-cHxvm20nkjOUySu7jdwiUxgGy11vuVPE9YeK89geLMLMMEOcKFyS2i+8wo0FOwyQO/bL8Bvq1KMsqK4bbOsPnA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-200">
+
+  <!-- navbar -->
+
+  <!-- Navbar with Firebase authentication and Tailwind CSS -->
+<nav class="bg-gray-800">
+  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Hamburger button -->
+        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out" aria-label="Main menu" aria-expanded="false">
+          <svg class="block h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <!-- Logo -->
+        <a href="/" class="flex-shrink-0">
+          <img class="block lg:hidden h-8 w-auto" src="/logo.svg" alt="Logo">
+          <img class="hidden lg:block h-8 w-auto" src="/logo.svg" alt="Logo">
+        </a>
+        <!-- Navbar links -->
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex">
+            <a href="/" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Home</a>
+            <a href="/about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">About</a>
+            <a href="/contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <!-- User menu -->
+<div class="ml-3 relative">
+  <div>
+    <button type="button" class="flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid" id="user-menu" aria-haspopup="true">
+      <span class="hidden sm:inline-block">John Doe</span>
+      <svg class="ml-2 h-4 w-4 fill-current sm:hidden" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4zM3 10a7 7 0 1114 0v1a7 7 0 01-14 0v-1zm7-8a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+  <!-- User dropdown menu, show/hide based on menu state -->
+  <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+    <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+      <!-- User information -->
+      <div class="px-4 py-2 text-sm text-gray-700">John Doe</div>
+      <div class="border-t border-gray-100"></div>
+      <!-- Logout button -->
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Sign out</a>
+    </div>
+  </div>
+</div>
+  <!-- hero section -->
+
+  <section id="hero" class="bg-gradient-to-r from-blue-500 to-purple-600">
+    <div class="container mx-auto px-4 md:px-6 py-20 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">Welcome to my website</h1>
+      <p class="text-white text-lg md:text-xl lg:text-2xl mb-8">"Welcome to ODEK - Building Innovative Solutions with Dhruv"</p>
+      <a href="#"
+        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow inline-block">Get
+        Started</a>
+    </div>
+  </section>
+
+  <!-- fetures section  -->
+  
+  <section id="features" class="py-20 bg-black text-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-center md:text-left">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">Web Development Features</h2>
+          <p class="text-lg mb-8">We offer the latest in web development technology to help your website stand out from the competition.</p>
+          <button class="bg-white text-black py-2 px-4 rounded-lg font-medium hover:bg-gray-300">Learn More</button>
+        </div>
+        <div class="relative">
+          <video autoplay muted loop class="absolute w-full h-full object-cover z-0">
+            <source src="video.mp4" type="video/mp4">
+          </video>
+          <div class="absolute w-full h-full bg-black opacity-50 z-10"></div>
+          <img src="favcon.png" alt="placeholder" class="absolute w-full h-full object-cover z-20">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="features1" class="py-20 bg-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="rounded-full bg-black text-white inline-block mb-4 p-4">
+            <i class="fas fa-paint-brush text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Modern Design</h3>
+          <p class="mb-4">We use Tailwind CSS to create sleek and modern website designs that are sure to impress your audience.</p>
+        </div>
+        <div class="text-center">
+          <div class="rounded-full bg-black text-white inline-block mb-4 p-4">
+            <i class="fas fa-bolt text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Fast Load Times</h3>
+          <p class="mb-4">We optimize your website to load quickly, ensuring your visitors have a smooth and seamless browsing experience.</p>
+        </div>
+        <div class="text-center">
+          <div class="rounded-full bg-black text-white inline-block mb-4 p-4">
+            <i class="fas fa-cog text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Customizable Features</h3>
+          <p class="mb-4">We use Java libraries and JavaScript to create custom features that meet your unique business needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- survice section -->
+
+  <section id="services" class="bg-gray-100 py-8">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-4 text-center">Our Services</h2>
+      <div class="flex flex-wrap -mx-4">
+        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center mb-4">
+              <div class="rounded-full bg-black w-16 h-16 flex items-center justify-center mr-4">
+                <i class="fas fa-cog text-white text-2xl"></i>
+              </div>
+              <h3 class="text-lg font-medium">Service 1</h3>
+            </div>
+            <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod turpis nec
+              ultrices sodales. Sed auctor mauris non ipsum suscipit tincidunt. </p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center mb-4">
+              <div class="rounded-full bg-black w-16 h-16 flex items-center justify-center mr-4">
+                <i class="fas fa-cog text-white text-2xl"></i>
+              </div>
+              <h3 class="text-lg font-medium">Service 2</h3>
+            </div>
+            <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod turpis nec
+              ultrices sodales. Sed auctor mauris non ipsum suscipit tincidunt. </p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center mb-4">
+              <div class="rounded-full bg-black w-16 h-16 flex items-center justify-center mr-4">
+                <i class="fas fa-cog text-white text-2xl"></i>
+              </div>
+              <h3 class="text-lg font-medium">Service 3</h3>
+            </div>
+            <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod turpis nec
+              ultrices sodales. Sed auctor mauris non ipsum suscipit tincidunt. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- about section -->
+
+  <section id="about" class="relative h-screen overflow-hidden">
+    <video id="bg-video" autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover z-10">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-75 z-20"></div>
+    <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-30">
+      <h1 class="text-white text-5xl font-bold mb-6 text-center">About Us</h1>
+      <p class="text-white text-lg mb-12 text-center">We're a team of passionate web developers who are dedicated to creating modern, fast, and reliable websites that will help your business succeed online.</p>
+      <a href="#" class="bg-white text-black py-3 px-6 rounded-full hover:bg-gray-300 transition-colors duration-300 ease-in-out">Learn More</a>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full text-white text-center z-30">
+      <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+    </div>
+  </section>
+  
+  <section id="about1" class="bg-gray-100 py-20">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap -mx-4">
+        <div class="w-full md:w-1/2 px-4">
+          <h2 class="text-4xl font-bold mb-8">Our Story</h2>
+          <p class="text-lg mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque efficitur augue eu diam ullamcorper, vel tristique nisi bibendum. Nullam venenatis interdum efficitur. Donec et est nulla. Sed lobortis velit id tristique faucibus. Ut sit amet risus a velit ultrices placerat eget eget dui. </p>
+          <button id="take-tour-btn" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" onclick="scrollToNavbar()">Take a Tour</button>
+        </div>
+        <div class="w-full md:w-1/2 px-4">
+          <div class="relative h-0" style="padding-bottom: 56.25%;">
+            <video id="about-video" class="absolute top-0 left-0 w-full h-full object-cover" poster="">
+              <source src="video.mp4" type="video/mp4">
+            </video>
+            <div class="absolute top-0 left-0 w-full h-full bg-black opacity-75"></div>
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+              <button class="text-white hover:text-gray-300 focus:outline-none" onclick="toggleVideo()">
+                <svg class="w-16 h-16 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+  <!-- contact us -->
+  
+  <section id="contact" class="bg-gray-100 py-8 sm:py-12">
+    <div class="container px-4 md:px-12 mx-auto">
+      <div class="max-w-screen-lg mx-auto">
+        <h2 class="text-3xl md:text-4xl text-gray-800 font-semibold mb-8 text-center">
+          Contact Us
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-4">
+          <div class="bg-white p-8 shadow-lg rounded-lg">
+            <h3 class="text-xl sm:text-lg text-gray-800 font-semibold mb-4">Send us a message</h3>
+            <form id="contact-form">
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="name">
+                  Name
+                </label>
+                <input
+                  class="w-full px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-teal-400"
+                  id="name" name="name" type="text" required />
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="email">
+                  Email
+                </label>
+                <input
+                  class="w-full px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-teal-400"
+                  id="email" name="email" type="email" required />
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2" for="message">
+                  Message
+                </label>
+                <textarea
+                  class="w-full px-3 py-2 border border-gray-400 rounded focus:outline-none focus:border-teal-400"
+                  id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+              </div>
+              <button
+                class="bg-teal-400 text-white px-4 py-2 rounded hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
+                type="submit">
+                Send
+              </button>
+            </form>
+          </div>
+          <div class="bg-white p-8 shadow-lg rounded-lg">
+            <h3 class="text-xl sm:text-lg text-gray-800 font-semibold mb-4">Contact Information</h3>
+            <ul class="text-gray-700">
+              <li class="mb-4 flex items-start">
+                <i class="fas fa-map-marker-alt text-teal-400 mr-2 mt-1"></i>
+                <div>
+                  <h4 class="font-semibold">Address</h4>
+                  <p class="text-sm">123 Main St.<br>Anytown, USA 12345</p>
+                </div>
+              </li>
+              <li class="mb-4 flex items-start">
+                <i class="fas fa-envelope text-teal-400 mr-2 mt-1"></i>
+                <div>
+                  <h4 class="font-semibold">Email</h4>
+                  <p class="text-sm">odek@gmail.com</p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-phone text-teal-400 mr-2 mt-1"></i>
+                <div>
+                        <p class="text-gray-600 font-semibold">Phone</p>
+                        <p class="text-gray-500 mt-1">+1 (123) 456-7890</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center mb-2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <!-- footer section -->
+
+  <footer id="footer" class="bg-gray-800">
+    <div class="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-white">
+      <div class="col-span-1">
+        <h2 class="text-xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+        <form>
+          <div class="flex items-center mb-4">
+            <input required type="email" placeholder="Enter your email"
+              class="rounded-l-full py-2 px-4 w-full bg-gray-200 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <button type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-full focus:outline-none">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-span-1 sm:col-span-2 md:col-span-1">
+        <h2 class="text-xl font-bold mb-4">Links</h2>
+        <ul class="list-none">
+          <li><a href="#" class="hover:text-blue-500">Home</a></li>
+          <li><a href="#" class="hover:text-blue-500">About Us</a></li>
+          <li><a href="#" class="hover:text-blue-500">Products</a></li>
+          <li><a href="#" class="hover:text-blue-500">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-span-1 sm:col-span-2 md:col-span-1">
+        <h2 class="text-xl font-bold mb-4">Follow Us</h2>
+        <ul class="list-none">
+          <li><a href="#" class="hover:text-blue-500"><i class="fab fa-facebook-f mr-2"></i>Facebook</a></li>
+          <li><a href="#" class="hover:text-blue-500"><i class="fab fa-twitter mr-2"></i>Twitter</a></li>
+          <li><a href="#" class="hover:text-blue-500"><i class="fab fa-instagram mr-2"></i>Instagram</a></li>
+          <li><a href="#" class="hover:text-blue-500"><i class="fab fa-youtube mr-2"></i>YouTube</a></li>
+        </ul>
+      </div>
+      <div class="col-span-1 sm:col-span-2 md:col-span-1">
+        <h2 class="text-xl font-bold mb-4">Contact Us</h2>
+        <ul class="list-none">
+          <li><i class="fas fa-map-marker-alt mr-2"></i>1234 Main Street, Anytown, USA</li>
+          <li><i class="fas fa-phone mr-2"></i>+1 (555) 123-4567</li>
+          <li><i class="fas fa-envelope mr-2"></i>contact@mycompany.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center py-4 text-gray-400">&copy; 2023 My Company. All rights reserved. -DHRUV</div>
+  </footer>
+  
+  <!-- script section -->
+  <script src="main.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyAGCXT4g8HoaU6mwElBhPBxpl1-PObGLCc",
+      authDomain: "odek-cdb64.firebaseapp.com",
+      projectId: "odek-cdb64",
+      storageBucket: "odek-cdb64.appspot.com",
+      messagingSenderId: "278334400862",
+      appId: "1:278334400862:web:68b917894a15dd004747cf",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // Add an event listener to handle changes in the user's authentication state
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // If the user is logged in, display their username in the navbar
+        const username = user.displayName;
+        $('#user-info').text(`Welcome, ${username}`);
+      } else {
+        // If the user is not logged in, clear the user info in the navbar
+        $('#user-info').empty();
+      }
+    });
+
+    // Hide the user info and logout button by default
+    $('#user-info').hide();
+    $('#logout-btn').hide();
+
+    // Add an event listener to handle changes in the user's authentication state
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // If the user is logged in, display their username and a logout button in the navbar
+        const username = user.displayName;
+        $('#user-info').text(`Welcome, ${username}`);
+        $('#user-info').show();
+        $('#logout-btn').show();
+      } else {
+        // If the user is not logged in, clear the user info in the navbar and hide the elements
+        $('#user-info').empty();
+        $('#user-info').hide();
+        $('#logout-btn').hide();
+      }
+    });
+
+    // Add an event listener to handle the logout action
+    $('#logout-btn').click(() => {
+      firebase.auth().signOut();
+    });
+
+    // Hide the user info and logout button by default, and show the login and signup buttons
+    $('#user-info').hide();
+    $('#logout-btn').hide();
+    $('#login-btn').show();
+    $('#signup-btn').show();
+
+    // Add an event listener to handle changes in the user's authentication state
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // If the user is logged in, display their username and a logout button in the navbar
+        const username = user.displayName;
+        $('#user-info').text(`Welcome, ${username}`);
+        $('#user-info').show();
+        $('#logout-btn').show();
+        $('#login-btn').hide();
+        $('#signup-btn').hide();
+      } else {
+        // If the user is not logged in, clear the user info in the navbar and hide the logout button,
+        // and show the login and signup buttons
+        $('#user-info').empty();
+        $('#user-info').hide();
+        $('#logout-btn').hide();
+        $('#login-btn').show();
+        $('#signup-btn').show();
+      }
+    });
+
+    // Add an event listener to handle the logout action
+    $('#logout-btn').click(() => {
+      firebase.auth().signOut();
+    });
+
+const navbar = document.getElementById('navbar');
+const hero = document.getElementById('hero');
+const features = document.getElementById('features');
+const features1 = document.getElementById('features1');
+const services = document.getElementById('services');
+const about = document.getElementById('about');
+const about1 = document.getElementById('about1');
+const contact = document.getElementById('contact');
+const footer = document.getElementById('footer');
+const takeTourBtn = document.getElementById('take-tour-btn');
+
+takeTourBtn.addEventListener('click', function() {
+  navbar.scrollIntoView({ behavior: 'smooth' });
+
+  setTimeout(function() {
+    features.scrollIntoView({ behavior: 'smooth' });
+  }, 1000);
+
+  setTimeout(function() {
+    services.scrollIntoView({ behavior: 'smooth' });
+  }, 2000);
+
+  setTimeout(function() {
+    about.scrollIntoView({ behavior: 'smooth' });
+  }, 3000);
+
+  setTimeout(function() {
+    contact.scrollIntoView({ behavior: 'smooth' });
+  }, 4000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 5000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 6000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 7000);
+
+  setTimeout(function() {
+    footer.scrollIntoView({ behavior: 'smooth' });
+  }, 8000);
+
+});
+
+// <!-- Show/hide responsive navigation menu -->
+      const menuToggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("menu");
+  
+      menuToggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+  </script>
+</body>
+
+</html>
